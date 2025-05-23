@@ -1,8 +1,11 @@
 import { Grid, Paper, Box } from "@mui/material";
 import dayjs from "dayjs";
+import { Link } from "react-router-dom";
 
 export default function ArticleSummaryCard({ articleData }) {
-  return (
+  const isLink = !articleData.body;
+
+  const content = (
     <Paper
       elevation={2}
       variant="outlined"
@@ -28,4 +31,14 @@ export default function ArticleSummaryCard({ articleData }) {
       </Grid>
     </Paper>
   );
+
+  if (isLink) {
+    return (
+      <Link relative="path" to={`./${articleData.article_id}`}>
+        {content}
+      </Link>
+    );
+  } else {
+    return <>{content}</>;
+  }
 }

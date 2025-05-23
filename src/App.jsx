@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import AllArticles from "./components/AllArticles";
+import ViewArticle from "./components/ViewArticle";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles" element={<AllArticles />} />
+        <Route path="/articles/:article_id" element={<ViewArticle />} />
       </Routes>
     </>
   );
