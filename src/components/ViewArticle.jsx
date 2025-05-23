@@ -2,7 +2,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ArticleSummaryCard from "./ArticleSummaryCard";
-import { Box, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import Comments from "./Comments";
 
 export default function ViewArticle() {
   const { article_id } = useParams();
@@ -17,11 +18,15 @@ export default function ViewArticle() {
       });
   }, [article_id]);
   return (
-    <>
+    <Container>
       <ArticleSummaryCard articleData={fullArticleData} />
       <Box>
         <Typography variant="body1">{fullArticleData.body}</Typography>
       </Box>
-    </>
+      <Comments
+        articleId={article_id}
+        commentCount={fullArticleData.commentCount}
+      />
+    </Container>
   );
 }
